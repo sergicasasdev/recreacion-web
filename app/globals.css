@@ -49,6 +49,12 @@ body {
     radial-gradient(500px circle at 85% 30%, var(--accent-soft), transparent 65%);
 }
 
+/* Halo discreto para dar protagonismo a la sección de lista de espera. */
+.waitlist-halo {
+  background: radial-gradient(560px circle at 50% 0%, var(--accent-soft), transparent 72%);
+  opacity: 0.7;
+}
+
 /* Panel de reserva para imágenes que se añadirán más adelante. */
 .media-placeholder {
   background: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.035) 0 2px, transparent 2px 10px),

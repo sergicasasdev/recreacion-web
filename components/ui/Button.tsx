@@ -7,6 +7,8 @@ type ButtonProps = {
   disabled?: boolean;
   children: ReactNode;
   className?: string;
+  type?: "button" | "submit";
+  onClick?: () => void;
 };
 
 const base =
@@ -26,7 +28,21 @@ export default function Button({
   disabled,
   children,
   className = "",
+  type = "button",
+  onClick,
 }: ButtonProps) {
+  if (!href) {
+    const classes = `${base} ${variants[variant]} ${
+      disabled ? "pointer-events-none opacity-40 hover:translate-y-0" : ""
+    } ${className}`;
+
+    return (
+      <button type={type} onClick={onClick} disabled={disabled} className={classes}>
+        {children}
+      </button>
+    );
+  }
+
   const isDisabled = disabled || !href;
   const classes = `${base} ${variants[variant]} ${
     isDisabled ? "pointer-events-none opacity-40 hover:translate-y-0" : ""

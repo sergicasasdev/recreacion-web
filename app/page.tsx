@@ -4,11 +4,13 @@ import Community from "@/components/sections/Community";
 import Gallery from "@/components/sections/Gallery";
 import Hero from "@/components/sections/Hero";
 import Updates from "@/components/sections/Updates";
+import Waitlist from "@/components/sections/Waitlist";
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <Waitlist />
       <AboutGame />
       <CityZones />
       <Gallery />
