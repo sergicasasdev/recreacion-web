@@ -1,26 +1,83 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #07080b;
+  --foreground: #f4f5f7;
+  --surface: #111319;
+  --surface-elevated: #171a21;
+  --border: rgba(255, 255, 255, 0.09);
+  --muted: #98a1ad;
+  --accent: #2e7dff;
+  --accent-strong: #1d4ed8;
+  --accent-soft: rgba(46, 125, 255, 0.16);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-heading);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Fondo del hero: cuadrícula urbana sutil, sin imágenes externas. */
+.hero-grid {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(circle at 50% 30%, black, transparent 75%);
+  mask-image: radial-gradient(circle at 50% 30%, black, transparent 75%);
+}
+
+.hero-glow {
+  background: radial-gradient(650px circle at 20% 10%, var(--accent-soft), transparent 60%),
+    radial-gradient(500px circle at 85% 30%, var(--accent-soft), transparent 65%);
+}
+
+/* Panel de reserva para imágenes que se añadirán más adelante. */
+.media-placeholder {
+  background: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.035) 0 2px, transparent 2px 10px),
+    linear-gradient(160deg, var(--surface-elevated), var(--surface));
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
